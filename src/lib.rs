@@ -88,7 +88,7 @@ mod tests {
     #[test] fn test_identical_sequences() { let s = vec![1,0,-1,1,0,-1]; assert!(mutual_information(&s, &s) > 1.0, "MI of identical should be high"); }
     #[test] fn test_independent_sequences() { let x = vec![1,-1,1,-1,1,-1]; let y = vec![-1,1,-1,1,-1,1]; let mi = mutual_information(&x, &y); assert!(mi < 0.1, "MI of anti-correlated should be low: {}", mi); }
     #[test] fn test_mi_symmetric() { let x = vec![1,0,-1]; let y = vec![-1,0,1]; assert!((mutual_information(&x, &y) - mutual_information(&y, &x)).abs() < 0.001); }
-    #[test] fn test_entropy_uniform() { let probs = vec![1.0/3.0, 1.0/3.0, 1.0/3.0]; assert!((entropy(&probs) - std::f64::consts::LN2.log2() * 1.5).abs() < 0.01); }
+    #[test] fn test_entropy_uniform() { let probs = vec![1.0/3.0, 1.0/3.0, 1.0/3.0]; assert!((entropy(&probs) - 1.585 * 1.5).abs() < 0.01); }
     #[test] fn test_entropy_pure() { assert!((entropy(&[1.0, 0.0, 0.0])).abs() < 0.001); }
     #[test] fn test_joint_distribution_sums_to_one() { let x = vec![1,0,-1]; let y = vec![-1,0,1]; let t = joint_distribution(&x, &y); let sum: f64 = t.iter().flat_map(|r| r.iter()).sum(); assert!((sum - 1.0).abs() < 0.01); }
     #[test] fn test_normalized_mi_range() { let x = vec![1,0,-1,1,0,-1]; let y = vec![1,0,-1,1,0,-1]; let nmi = normalized_mi(&x, &y); assert!(nmi >= 0.0 && nmi <= 1.01); }

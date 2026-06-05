@@ -1,0 +1,6 @@
+[package]
+name = "ternary-mutual-info"
+version = "0.1.0"
+edition = "2021"
+description = "Mutual information estimation for {-1,0,+1} sequences — pairwise MI, total correlation, Kozachenko-Leonenko"
+license = "MIT"

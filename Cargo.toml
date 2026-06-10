@@ -1,4 +1,5 @@
 [package]
+repository = "https://github.com/SuperInstance/ternary-mutual-info"
 name = "ternary-mutual-info"
 version = "0.1.0"
 edition = "2021"
